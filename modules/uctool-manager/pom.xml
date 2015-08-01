@@ -11,7 +11,7 @@
     <groupId>com.xtremenetworkx</groupId>
     <artifactId>uctool-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>ejb</packaging>
+    <packaging>jar</packaging>
 
     <name>uctool-manager</name>
 
@@ -37,12 +37,6 @@
         <artifactId>cxf-rt-transports-http</artifactId>
         <version>2.7.16</version>
     </dependency>
-        <!-- Jetty is needed if you're are not using the CXFServlet -->
-    <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-http-jetty</artifactId>
-        <version>2.7.16</version>
-    </dependency>
     </dependencies>
 
     <build>
@@ -57,14 +51,6 @@
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <ejbVersion>3.1</ejbVersion>
                 </configuration>
             </plugin>
             <!--
