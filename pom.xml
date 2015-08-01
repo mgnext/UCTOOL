@@ -7,8 +7,10 @@
   <packaging>pom</packaging>
   <name>uctool</name>
   <modules>
-    <module>modules/uctool-ear</module>
-    <module>modules/uctool-view</module>
+
     <module>modules/uctool-manager</module>
+    <module>modules/uctool-view</module>
+    <module>modules/uctool-ear</module>
+
   </modules>
 </project>
