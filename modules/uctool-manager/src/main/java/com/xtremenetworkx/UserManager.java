@@ -2,8 +2,8 @@ package com.xtremenetworkx;
 
 public class UserManager {
 
-    public void Test(){
-
+    public String Test(){
+        return "TEST";
     }
 
 }
