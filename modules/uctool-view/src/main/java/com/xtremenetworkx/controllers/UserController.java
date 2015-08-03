@@ -8,7 +8,8 @@ public class UserController {
     public String getUsers(){
 
         UserManager userManager = new UserManager();
-        userManager.Test();
-        return "TEST UserController";
+        String  Test= userManager.Test();
+        System.out.println(Test);    
+        return Test;
     }
 }
