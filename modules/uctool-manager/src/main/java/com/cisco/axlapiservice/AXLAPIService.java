@@ -15,7 +15,7 @@ import javax.xml.ws.Service;
  * 
  */
 @WebServiceClient(name = "AXLAPIService", 
-                  wsdlLocation = "https://172.30.100.78/axl/?wsdl",
+                  wsdlLocation = "http://172.30.100.78/axl/?wsdl",
                   targetNamespace = "http://www.cisco.com/AXLAPIService/") 
 public class AXLAPIService extends Service {
 
@@ -26,11 +26,11 @@ public class AXLAPIService extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("https://172.30.100.78/axl/?wsdl");
+            url = new URL("http://172.30.100.78/axl/?wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(AXLAPIService.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "https://172.30.100.78/axl/?wsdl");
+                     "Can not initialize the default wsdl from {0}", "http://172.30.100.78/axl/?wsdl");
         }
         WSDL_LOCATION = url;
     }

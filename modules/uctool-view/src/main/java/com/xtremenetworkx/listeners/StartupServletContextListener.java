@@ -20,14 +20,14 @@ public class StartupServletContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 //         javax.net.ssl.HttpsURLConnection.setDefaultAllowUserInteraction(true);
-//        javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
-//            new javax.net.ssl.HostnameVerifier(){
-//
-//                @Override
-//                public boolean verify(String hostname, javax.net.ssl.SSLSession sslSession) {
-//                    return true;
-//                }
-//            });
+        javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
+            new javax.net.ssl.HostnameVerifier(){
+
+                @Override
+                public boolean verify(String hostname, javax.net.ssl.SSLSession sslSession) {
+                    return true;
+                }
+            });
     }
 
     @Override
