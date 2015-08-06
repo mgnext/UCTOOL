@@ -46,5 +46,30 @@ public class UserManager {
             return null;
         }
     }
+    
+    public List<LUser> listUsers(ListUserReq.SearchCriteria criteria, LUser returnedTags){
+        AXLPort axlPort = new AXLAPIService().getAXLPort();
+        
+((BindingProvider) axlPort).getRequestContext().put( BindingProvider.ENDPOINT_ADDRESS_PROPERTY, AXL_URL);
+((BindingProvider) axlPort).getRequestContext().put(BindingProvider.USERNAME_PROPERTY, Configs.CU_USERNAME);
+((BindingProvider) axlPort).getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, Configs.CU_PASSWORD);
+
+        try {
+            ListUserReq axlParams = new ListUserReq();
+            axlParams.setSearchCriteria(criteria);
+        
+            axlParams.setReturnedTags(returnedTags);
+            System.out.println("ListUserReq");
+ 
+//Make a call to the AXL Service and pass the getPhone request
+        ListUserRes listUserResponse = axlPort.listUser(axlParams);
+ 
+//display information returned in the response to the user
+        return listUserResponse.getReturn().getUser();
+        } catch (AXLError ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
 }
