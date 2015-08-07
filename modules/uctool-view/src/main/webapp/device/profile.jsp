@@ -143,7 +143,7 @@
     $(function () {
         console.log("jkhask");
         $('#inputName').autocomplete({
-            serviceUrl: 'getUserByName',
+            serviceUrl: '../get',
             onSelect: function (suggestion) {
                 alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
             }

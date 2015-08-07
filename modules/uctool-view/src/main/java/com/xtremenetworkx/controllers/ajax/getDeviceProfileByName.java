@@ -5,8 +5,10 @@
  */
 package com.xtremenetworkx.controllers.ajax;
 
+import com.cisco.axl.api._10.LDeviceProfile;
 import com.cisco.axl.api._10.LUser;
 import com.google.gson.Gson;
+import com.xtremenetworkx.controllers.DeviceProfileController;
 import com.xtremenetworkx.controllers.UserController;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Xtreme
  */
-public class getUserByName extends HttpServlet {
+public class getDeviceProfileByName extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,20 +37,20 @@ public class getUserByName extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<LUser> users = new UserController().getUserByName(request.getParameter("query"));
+            List<LDeviceProfile> deviceProfiles = new DeviceProfileController().getDeviceProfilebyUserName("");
             Gson gson = new Gson();
                 
                 //out.print("{\"suggestions\":"+json+"}"); 
                 out.print("{\"suggestions\" : [");
-                int length = users.size();  
+                int length = deviceProfiles.size();  
                 
                 for(int i = 0; i < length-1;i++)
                 {
-                    String json = gson.toJson(users.get(i));
-                    out.print("{ \"Value\": \""+users.get(i).getLastName()+"\", \"data\": "+json +"},");
+                    String json = gson.toJson(deviceProfiles.get(i));
+                    //out.print("{ \"Value\": \""+deviceProfiles.get(i).get+"\", \"data\": "+json +"},");
                 }
-                String json = gson.toJson(users.get(length-1));
-                out.print(" {\"Value\": \""+users.get(length-1).getLastName()+"\", \"data\": "+json+"}");
+                String json = gson.toJson(deviceProfiles.get(length-1));
+               // out.print(" {\"Value\": \""+deviceProfiles.get(length-1).getLastName()+"\", \"data\": "+json+"}");
                 out.print("] }");
         }
     }

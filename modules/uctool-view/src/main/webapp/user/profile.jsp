@@ -74,17 +74,6 @@
         console.log("jkhask");
         $('#inputName').autocomplete({
             serviceUrl: '../getUserByName',
-            transformResult: function (response) {
-                console.log(response);
-                x = response;
-                console.log(response.suggestions);
-                return {
-                    suggestions: $.map(response.suggestions, function (dataItdem) {
-                        console.log(dataItdem);
-                        return {value: dataItem.lastName, data: dataItem};
-                    })
-                };
-            },
             onSelect: function (suggestion) {
                 alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
             }
