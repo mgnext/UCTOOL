@@ -29,6 +29,7 @@
         <script src="../bower_components/bootstrap/js/scrollspy.js"></script>
         <script src="../bower_components/bootstrap/js/collapse.js"></script>
         <script src="../bower_components/bootstrap/js/tab.js"></script>
+	<script src="../bower_components/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
