@@ -19,7 +19,7 @@
         <%
              List<LUser> users = new UserManager().Test();
              for(LUser user : users){
-                out.print("<li>"+user.getFirstName()+"</li>");
+                out.print("<li>"+user.getLastName()+"</li>");
              }
              //new UserController().addUser();
              for(LUser user : new UserController().getUsers()){

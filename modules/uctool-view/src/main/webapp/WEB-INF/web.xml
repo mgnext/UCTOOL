@@ -4,6 +4,14 @@
         <description>ServletContextListener</description>
         <listener-class>com.xtremenetworkx.listeners.StartupServletContextListener</listener-class>
     </listener>
+    <servlet>
+        <servlet-name>getUserByName</servlet-name>
+        <servlet-class>com.xtremenetworkx.controllers.ajax.getUserByName</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getUserByName</servlet-name>
+        <url-pattern>/getUserByName</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
