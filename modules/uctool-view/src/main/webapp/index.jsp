@@ -17,9 +17,14 @@
     <body>
         <h1>Hello World!</h1>
         <%
-             List<LUser> userList = new UserManager().Test();
-             out.print(userList.get(0).getFirstName());
-             out.print(new UserController().getUsers().get(0).getFirstName());
+             List<LUser> users = new UserManager().Test();
+             for(LUser user : users){
+                out.print("<li>"+user.getFirstName()+"</li>");
+             }
+             //new UserController().addUser();
+             for(LUser user : new UserController().getUsers()){
+                out.print("<li>"+user.getFirstName()+"</li>");
+             }
         %>
     </body>
 </html>

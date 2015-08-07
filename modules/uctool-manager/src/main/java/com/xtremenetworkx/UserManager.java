@@ -1,11 +1,14 @@
 package com.xtremenetworkx;
 
+import com.cisco.axl.api._10.AddUserReq;
 import com.cisco.axl.api._10.GetPhoneReq;
 import com.cisco.axl.api._10.GetPhoneRes;
 import com.cisco.axl.api._10.GetUserReq;
 import com.cisco.axl.api._10.LUser;
 import com.cisco.axl.api._10.ListUserReq;
 import com.cisco.axl.api._10.ListUserRes;
+import com.cisco.axl.api._10.StandardResponse;
+import com.cisco.axl.api._10.XUser;
 import com.cisco.axlapiservice.AXLAPIService;
 import com.cisco.axlapiservice.AXLError;
 import com.cisco.axlapiservice.AXLPort;
@@ -28,7 +31,7 @@ public class UserManager {
         try {
             ListUserReq axlParams = new ListUserReq();
             ListUserReq.SearchCriteria criteria =  new ListUserReq.SearchCriteria();
-            criteria.setFirstName("Na%");
+            criteria.setFirstName("%");
             axlParams.setSearchCriteria(criteria);
             
             LUser returnedTags =new LUser();
@@ -66,6 +69,29 @@ public class UserManager {
  
 //display information returned in the response to the user
         return listUserResponse.getReturn().getUser();
+        } catch (AXLError ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public String addUser(XUser user){
+        AXLPort axlPort = new AXLAPIService().getAXLPort();
+        
+((BindingProvider) axlPort).getRequestContext().put( BindingProvider.ENDPOINT_ADDRESS_PROPERTY, AXL_URL);
+((BindingProvider) axlPort).getRequestContext().put(BindingProvider.USERNAME_PROPERTY, Configs.CU_USERNAME);
+((BindingProvider) axlPort).getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, Configs.CU_PASSWORD);
+
+        try {
+            AddUserReq axlParams = new AddUserReq();
+            axlParams.setUser(user);
+            System.out.println("AddUserReq");
+ 
+//Make a call to the AXL Service and pass the getPhone request
+            StandardResponse addUserResponse = axlPort.addUser(axlParams);
+ 
+//display information returned in the response to the user
+        return addUserResponse.getReturn();
         } catch (AXLError ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
             return null;
