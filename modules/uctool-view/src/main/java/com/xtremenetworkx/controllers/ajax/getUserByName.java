@@ -37,9 +37,18 @@ public class getUserByName extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             List<LUser> users = new UserController().getUserByName("");
             Gson gson = new Gson();
-                String json = gson.toJson(users);
-                out.print(json);        
-            
+                
+                //out.print("{\"suggestions\":"+json+"}"); 
+                out.print("{\"suggestions\" : [");
+                int length = users.size();
+                for(int i = 0; i < length-1;i++)
+                {
+                    String json = gson.toJson(users.get(i));
+                    out.print(" \"Value\": \""+users.get(i).getLastName()+"\", \"data\": "+json +",");
+                }
+                String json = gson.toJson(users.get(length));
+                out.print(" \"Value\": \""+users.get(length-1).getLastName()+"\", \"data\": "+json);
+                out.print("] }");
         }
     }
 
